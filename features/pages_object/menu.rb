@@ -27,9 +27,11 @@ class MenuCAU < SitePrism::Page
     contato.click
   end
 
-  element :contacorrente, "#conta"
+  def beneficiario
+    find("#beneficiario").click
+  end
 
   def conta
-    contacorrente.click
+    find("#conta").click
   end
 end

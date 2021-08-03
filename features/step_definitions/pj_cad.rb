@@ -7,94 +7,143 @@ end
 Quando("acesso a funcionalidade CAU") do
   @menu = MenuCAU.new
   @menu.cau
-  binding.pry
 end
-
+#@pj_aces ------------------
 Dado("que estou na tela Cadastrar > Individual") do
   @menu.cad
   @menu.consultar
   @menu.individual
 end
 
-#Dado("preencho os dados do cliente") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Dado("preencho os dados do cliente") do
+  @cad = CadastroMaster.new
+  sleep(2)
+  @cad.cadastro
+end
 
-#Quando("clico em salvar") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Quando("clico em salvar") do
+  @cad.salv
+end
 
-#Então("vejo a mensagem “Seus dados foram salvos.”") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Então("vejo a mensagem “Seus dados foram salvos.”") do
+  expect(page).to have_content "Seus dados foram salvos."
+  @cad.ok
+end
 
-#Dados("que estou na tela Dados da Empresa") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+#@pj_emp ------------------
+Dados("que estou na tela Dados da Empresa") do
+  @menu = MenuCAU.new
+  @menu.consultar
+  @cad = CadastroMaster.new
+  sleep(2)
+  @cad.edit
+end
 
-#Dados("preencho os campos obrigatórios") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Dados("preencho os campos obrigatórios") do
+  @cad.dados_empresa
+end
 
-#Quando("marco o botão salvar") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Quando("marco o botão salvar") do
+  @cad.salv
+end
 
-#Então("aparece a mensagem “Seus dados foram salvos.”") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Então("aparece a mensagem “Seus dados foram salvos.”") do
+  expect(page).to have_content "Seus dados foram salvos."
+  @cad.ok
+end
 
-#Dados("que estou na tela Endereço") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+# @pj_end ------------------
+Dados("que estou na tela Endereço") do
+  @menu = MenuCAU.new
+  @menu.consultar
+  @cad = CadastroMaster.new
+  sleep(2)
+  @cad.edit
+end
 
-#Dados("preencho os campos") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Dados("preencho os campos") do
+  @cad.end_empresa
+end
 
-#Quando("clico no botão salvar") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Quando("clico no botão salvar") do
+  @cad.salvar
+end
 
-#Então("vejo os dados salvos") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Então("vejo o endereço principal salvo") do
+  expect(page).to have_content "PRINCIPAL"
+end
 
-#Dados("que estou na tela Contato") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+#@pj_cont ------------------
+Dados("que estou na tela Contato") do
+  @menu = MenuCAU.new
+  @menu.consultar
+  @cad = CadastroMaster.new
+  sleep(3)
+  @cad.edit
+  @menu.contato_master
+end
 
-#Dados("marco o usuário master") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Dados("preencho todos os campos") do
+  @cad.cadastro_master
+end
 
-#Quando("clico não opção salvar") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Dados("marco o usuário master") do
+  @cad.flag_master
+end
 
-#Então("os dados são salvos") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Quando("clico não opção salvar") do
+  @cad.salvar
+end
 
-#Dados("clico em não localizado") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Então("vejo os dados do usário master sendo salvo") do
+  expect(page).to have_content "Sim"
+end
 
-#Quando("clico no salvar") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+#@pj_benef ------------------
+Dados("que estou na tela Beneficiário Final") do
+  @menu = MenuCAU.new
+  @menu.consultar
+  @cad = CadastroMaster.new
+  sleep(3)
+  @cad.edit
+  @menu.beneficiario
+end
 
-#Então("retorna a mensagem “Seus dados foram salvos.”") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Dados("clico em não localizado") do
+  @cad.nao_localizado
+end
 
-#Quando("clico no elemento salvar") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Quando("clico no salvar") do
+  @cad.salv
+end
 
-#Então("vejo “Seus dados foram salvos.”") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
+Então("retorna a mensagem “Seus dados foram salvos.”") do
+  expect(page).to have_content "Seus dados foram salvos."
+end
+
+# @pj_cc ------------------
+Dados("que estou na tela Contato Corrente") do
+  @menu = MenuCAU.new
+  @menu.consultar
+  @cad = CadastroMaster.new
+  sleep(3)
+  @cad.edit
+  @menu.conta
+end
+
+Dados("cadastro uma conta corrente") do
+  @cad.cadastro_cc
+end
+
+Quando("clico no elemento salvar") do
+  #click_link("Cancelar")
+  @cad.salvar
+  sleep(5)
+end
+
+Então("vejo “Seus dados foram salvos.”") do
+  expect(page).to have_content "Seus dados foram salvos."
+end
 
 #Dados("marco o produto") do
 #  pending # Write code here that turns the phrase above into concrete actions
