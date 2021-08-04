@@ -1,0 +1,7 @@
+default: --publish-quiet -p pretty -p homolog -p json
+
+pretty: --format pretty
+homolog: AMBIENTE=homolog
+desenv: AMBIENTE=desenv
+html: --format html --out=reports/relatorio.html
+json: --format json --out=reports/relatorio.json

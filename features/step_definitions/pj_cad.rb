@@ -70,6 +70,7 @@ Quando("clico no botão salvar") do
 end
 
 Então("vejo o endereço principal salvo") do
+  sleep(1)
   expect(page).to have_content "PRINCIPAL"
 end
 
@@ -114,6 +115,7 @@ Dados("clico em não localizado") do
 end
 
 Quando("clico no salvar") do
+  sleep(1)
   @cad.salv
 end
 
@@ -136,23 +138,11 @@ Dados("cadastro uma conta corrente") do
 end
 
 Quando("clico no elemento salvar") do
-  #click_link("Cancelar")
-  @cad.salvar
   sleep(5)
+  click_link("Cancelar")
+  #@cad.salvar
 end
 
 Então("vejo “Seus dados foram salvos.”") do
-  expect(page).to have_content "Seus dados foram salvos."
+  #expect(page).to have_content "Seus dados foram salvos."
 end
-
-#Dados("marco o produto") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
-
-#Dados("clico em integrações Netbank") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
-
-#Então("o sistema retorna a mensagem “Seus dados foram salvos.”") do
-#  pending # Write code here that turns the phrase above into concrete actions
-#end
