@@ -5,12 +5,10 @@ require "faker"
 require "time"
 require "cpf_faker"
 require "correios-cep"
-require_relative "page_helper.rb"
 require_relative "helper.rb"
 require "cucumber"
 require "pry"
 
-World(PageObjects)
 World(Helper)
 
 Capybara.configure do |config|
