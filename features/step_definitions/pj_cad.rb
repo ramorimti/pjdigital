@@ -17,7 +17,6 @@ end
 
 Dado("preencho os dados do cliente") do
   @cad = CadastroMaster.new
-  sleep(2)
   @cad.cadastro
 end
 
@@ -35,7 +34,6 @@ Dados("que estou na tela Dados da Empresa") do
   @menu = MenuCAU.new
   @menu.consultar
   @cad = CadastroMaster.new
-  sleep(2)
   @cad.edit
 end
 
@@ -57,7 +55,6 @@ Dados("que estou na tela Endereço") do
   @menu = MenuCAU.new
   @menu.consultar
   @cad = CadastroMaster.new
-  sleep(2)
   @cad.edit
 end
 
@@ -70,7 +67,6 @@ Quando("clico no botão salvar") do
 end
 
 Então("vejo o endereço principal salvo") do
-  sleep(1)
   expect(page).to have_content "PRINCIPAL"
 end
 
@@ -79,7 +75,6 @@ Dados("que estou na tela Contato") do
   @menu = MenuCAU.new
   @menu.consultar
   @cad = CadastroMaster.new
-  sleep(3)
   @cad.edit
   @menu.contato_master
 end
@@ -105,7 +100,6 @@ Dados("que estou na tela Beneficiário Final") do
   @menu = MenuCAU.new
   @menu.consultar
   @cad = CadastroMaster.new
-  sleep(3)
   @cad.edit
   @menu.beneficiario
 end
@@ -115,7 +109,6 @@ Dados("clico em não localizado") do
 end
 
 Quando("clico no salvar") do
-  sleep(1)
   @cad.salv
 end
 
@@ -128,7 +121,6 @@ Dados("que estou na tela Contato Corrente") do
   @menu = MenuCAU.new
   @menu.consultar
   @cad = CadastroMaster.new
-  sleep(3)
   @cad.edit
   @menu.conta
 end
@@ -138,7 +130,6 @@ Dados("cadastro uma conta corrente") do
 end
 
 Quando("clico no elemento salvar") do
-  sleep(5)
   click_link("Cancelar")
   #@cad.salvar
 end

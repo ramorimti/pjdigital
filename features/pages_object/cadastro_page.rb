@@ -4,7 +4,7 @@ class CadastroMaster < SitePrism::Page
     fill_in "cdCnpjCpf", with: @cnpj
     @company = Faker::Company.name
     fill_in "noCompleto", with: @company
-    find("span", text: "Selecione uma agência").click
+    find("span", text: "Selecione uma agência", wait: 10).click
     find("span", text: "MATRIZ - SAO PAULO").click
     sleep(3)
     find("#codigoGerente").click
@@ -23,10 +23,6 @@ class CadastroMaster < SitePrism::Page
     click_link("OK")
   end
 
-  # def salv_end
-  #   find("#enviar").click
-  # end
-
   def flag_master
     find("#flUsuarioMaster").click
   end
@@ -35,12 +31,8 @@ class CadastroMaster < SitePrism::Page
     find("#enviar").click
   end
 
-  # def salv_conta_cc
-  #   find("#enviar").click
-  # end
-
   def nao_localizado
-    find("#found").click
+    find("#found", wait: 10).click
   end
 
   def dados_empresa
@@ -76,7 +68,6 @@ class CadastroMaster < SitePrism::Page
     fill_in "dsCpf", with: @cpf
     @telefone = Faker::Base.numerify("112419####").to_s
     fill_in "dsTelefone", with: @telefone
-    sleep(3)
     email.set(Faker::Internet.email)
   end
 
@@ -84,8 +75,7 @@ class CadastroMaster < SitePrism::Page
     find('span[class$="flex-item-2"]').click  #adicionar conta corrente
     find(".container-popup").first(".mat-select-arrow-wrapper").click #seleção endereço
     find("span", text: "(PRINCIPAL)").click  #endereço
-    sleep(3)
     find("#modalidade").first(".mat-select-value").click  #selecionar modalidade
     find("span", text: "Cta Eletronica P J").click #modalidade
-  end
+end
 end
